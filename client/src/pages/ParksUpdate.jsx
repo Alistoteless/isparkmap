@@ -59,21 +59,10 @@ class ParksUpdate extends Component {
 
     handleUpdatePark = async () => {
         const { id, name, address, parkType, parkTypeDescription, capacity, workingHours, district, longitude, latitude} = this.state
-        const payload = {id, name, address, parkType, parkTypeDescription, capacity, workingHours, district, longitude, latitude }
+        const inspark = {id, name, address, parkType, parkTypeDescription, capacity, workingHours, district, longitude, latitude }
 
-        await api.updateParkById(id, payload).then(res => {
+        await api.updateParkById(id, inspark).then(res => {
             window.alert(`Park updated successfully`)
-           /*  this.setState({
-                name: '',
-                address: '',
-                parkType: '',
-                parkTypeDescription: '',
-                capacity: 0,
-                workingHours: '',
-                district: '',
-                longitude: 0,
-                latitude: 0
-            }) */
         })
     }
 
@@ -81,7 +70,7 @@ class ParksUpdate extends Component {
         const { id } = this.state
         const park = await api.getParkById(id)
 
-        this.setState({
+        this.setState({ //id'ye ait güncellenecek verilerin atanması (ekrana basmak için)
             name: park.data.data.name,
             address: park.data.data.address,
             parkType: park.data.data.parkType,

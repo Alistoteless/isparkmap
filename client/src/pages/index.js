@@ -4,3 +4,5 @@ import ParksUpdate from './ParksUpdate'
 import Login from './Login'
 import Home from './Home'
 export { ParksList, ParksInsert, ParksUpdate, Login, Home }
+
+//Sayfa yapılarının apiden çağırılması için  exportu

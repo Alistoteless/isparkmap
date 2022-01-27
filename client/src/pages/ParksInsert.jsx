@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import api from '../api'
-
 import styled from 'styled-components'
-
+// Park ekleme sayfası
 const Title = styled.h1.attrs({
     className: 'h2',
 })``
@@ -34,7 +33,7 @@ const CancelButton = styled.a.attrs({
 })`
     margin: 15px 15px 15px 5px;
 `
-
+// Park eklenmeden önce boş state'in hazırlanması
 class ParksInsert extends Component {
     constructor(props) {
         super(props)
@@ -52,16 +51,16 @@ class ParksInsert extends Component {
             latitude: 0
         }
     }
-
+    // seçilen id ile işlem yapılması için 
     handleInputChange = async event => {
         this.setState({ [event.target.id]: event.target.value })
     }
-
+    // Park ekleme yapısı
     handleIncludePark = async () => {
         const { id, name, address, parkType, parkTypeDescription, capacity, workingHours, district, longitude, latitude } = this.state
-        const payload = { id, name, address, parkType, parkTypeDescription, capacity, workingHours, district, longitude, latitude }
+        const inspark = { id, name, address, parkType, parkTypeDescription, capacity, workingHours, district, longitude, latitude }
         
-        await api.insertPark(payload).then(res => {
+        await api.insertPark(inspark).then(res => { // Park eklenirken asenkron beklenen yapı
             window.alert(`Park Yeri başarıyla eklendi!`)
             this.setState({
                 id: 0,
@@ -72,13 +71,13 @@ class ParksInsert extends Component {
                 capacity: 0,
                 workingHours: '',
                 district: '',
-                longitude: '',
+                longitude: 0,
                 latitude: 0
             })
         })
     }
 
-    
+    // Aşağıdaki inputlara göre eklenecek parkın render'ı
     render() {
         const { id, name, address, parkType, parkTypeDescription, capacity, workingHours, district, longitude, latitude } = this.state
         

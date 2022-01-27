@@ -8,6 +8,8 @@ import {
 } from 'reactstrap';
 import '../style/login.css';
 
+// Yönetici girişi için ekran HENÜZ ÇALIŞMIYOR!
+
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -20,10 +22,10 @@ class Login extends Component {
   handleSubmit(event) {
     if (this.state.value === 'admin123') {
       this.setState({ isAdmin: true })
-      alert('You are admin, welcome..');
+      alert('Yönetici girişi başarılı, hoşgeldiniz');
     }
     else {
-      alert('You are not admin!');
+      alert('Yönetici girişi başarısız oldu! Lütfen tekrar deneyiniz...');
     }
     event.preventDefault();
   }

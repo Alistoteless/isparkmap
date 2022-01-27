@@ -6,7 +6,8 @@ const Wrapper = styled.a.attrs({
     className: 'navbar-brand',
 })``
 
-class Logo extends Component {
+// Yönetici giriş paneline götüren buton
+class Admin extends Component {
     render() {
         return (
             <Wrapper>
@@ -18,4 +19,4 @@ class Logo extends Component {
     }
 }
 
-export default Logo
+export default Admin

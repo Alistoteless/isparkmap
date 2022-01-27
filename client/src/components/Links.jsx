@@ -14,23 +14,25 @@ const Item = styled.div.attrs({
     className: 'collpase navbar-collapse',
 })``
 
+// Navbar üzerinde görünen Linkler
+
 class Links extends Component {
     render() {
         return (
             <React.Fragment>
                 <Link to="/" className="navbar-brand">
-                    İsparkApp
+                    İsparkApp       {/* İspark Linki, haritanın bulunduğu ana sayfaya döner */}
                 </Link>
                 <Collapse>
                     <List>
                         <Item>
                             <Link to="/parks/list" className="nav-link">
-                                Otoparklar Listesi
+                                Otoparklar Listesi  {/* Park listesi  */}
                             </Link>
                         </Item>
                         <Item>
                             <Link to="/parks/create" className="nav-link">
-                                Otopark Ekle
+                                Otopark Ekle    {/* Yeni park ekleme  */}
                             </Link>
                         </Item>
                     </List>

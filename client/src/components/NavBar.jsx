@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-
-import Logo from './Logo'
+import Admin from './Admin'
 import Links from './Links'
 
 const Container = styled.div.attrs({
@@ -15,14 +14,14 @@ const Nav = styled.nav.attrs({
 })`
     margin-bottom: 20 px;
 `
-
+// Navbar itemi ve üzerinde yer alacaklar
 class NavBar extends Component {
     render() {
         return (
             <Container className="container">
                 <Nav>
                     <Links />
-                    <Logo />
+                    <Admin />
                 </Nav>
             </Container>
         )

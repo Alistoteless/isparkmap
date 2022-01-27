@@ -177,11 +177,12 @@ class ParksList extends Component {
         return (
             <Wrapper>
                 <Title>Kayıtlı Otoparklar Listesi</Title>
-                <Button onClick={() => {
-                    if (window.confirm('Liste İsPark Açık Veri Portalı veritabanından güncellenecek, tüm düzenlemeler silinecektir. Kabul ediyor musunuz?')) this.fetchFromIspark()
+                <Button styled="margin: 3em;" onClick={() => { // Güncelleme fonksiyonunun çağırılması
+                    if (window.confirm('Liste İsPark Açık Veri Portalı veritabanından güncellenecek,\
+                    önceki tüm ekleme ve düzenlemeler silinecektir. Kabul ediyor musunuz?')) this.fetchFromIspark() 
                 }}>İBB Veritabanı ile Yenile</Button>
                 {showTable && (
-                    <ReactTable
+                    <ReactTable // Tablonun hazırlanması
                         data={parks}
                         columns={columns}
                         loading={isLoading}

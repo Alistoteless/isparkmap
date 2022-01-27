@@ -1,40 +1,10 @@
 @import url("~leaflet/dist/leaflet.css");
 @import url('https://unpkg.com/leaflet@1.7.1/dist/leaflet.css');
 
-
-.leaflet-container {
+/* Harita stilinin ayarları ve leaflet kütüphane stillerinin yüklenmesi */ 
+.leaflet-container {    
     height: 600px;
     margin: 0 3%;
     border-style: outset;
     border-width:10px; 
 }
-.custom-popup .leaflet-popup-content-wrapper {
-    background:#2c3e50;
-    color:#fff;
-    font-size:16px;
-    line-height:24px;
-    border-radius: 0px;
-    }
-  .custom-popup .leaflet-popup-content-wrapper a {
-      color:rgba(255,255,255,0.1);
-    }
-  .custom-popup .leaflet-popup-tip-container {
-    width:30px;
-    height:15px;
-    }
-  .custom-popup .leaflet-popup-tip {
-      background: transparent;
-      border: none;
-      box-shadow: none;
-    }
-  
-.customcluster {
-    background: #9370db;
-    border: 3px solid #ededed;
-    border-radius: 50%;
-    color: #ededed;
-    height: 40px;
-    line-height: 37px;
-    text-align: center;
-    width: 40px;
-  }
