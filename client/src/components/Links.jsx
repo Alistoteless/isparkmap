@@ -22,8 +22,8 @@ class Links extends Component {
                     İsparkApp
                 </Link>
                 <Collapse>
-                    <List >
-                        <Item >
+                    <List>
+                        <Item>
                             <Link to="/parks/list" className="nav-link">
                                 Otoparklar Listesi
                             </Link>

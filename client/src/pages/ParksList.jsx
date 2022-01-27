@@ -14,7 +14,7 @@ const Wrapper = styled.div`
 
 const Title = styled.h1.attrs({
     className: 'h2',
-    
+
 })``
 
 const Update = styled.div`
@@ -86,9 +86,6 @@ class ParksList extends Component {
 
     fetchFromIspark = async () => {
         this.setState({ isLoading: true })
-        
-        await api.deleteAll()
-    
         await api.fetchFromIspark()
             .then(parks => {
                 this.setState({
@@ -180,7 +177,9 @@ class ParksList extends Component {
         return (
             <Wrapper>
                 <Title>Kayıtlı Otoparklar Listesi</Title>
-                <Button variant="contained" onClick={this.fetchFromIspark}>İBB Veritabanı ile Yenile</Button>
+                <Button onClick={() => {
+                    if (window.confirm('Liste İsPark Açık Veri Portalı veritabanından güncellenecek, tüm düzenlemeler silinecektir. Kabul ediyor musunuz?')) this.fetchFromIspark()
+                }}>İBB Veritabanı ile Yenile</Button>
                 {showTable && (
                     <ReactTable
                         data={parks}

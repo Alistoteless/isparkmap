@@ -1,4 +1,3 @@
-import { MapTest } from '../components';
 import React, { Component } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import api from '../api'
@@ -6,6 +5,7 @@ import L from 'leaflet';
 import MarkerClusterGroup from 'react-leaflet-markercluster';
 import 'react-leaflet-markercluster/dist/styles.min.css'
 import 'leaflet/dist/leaflet.css';
+import '../style'
 
 
 var myIcon = L.icon({
@@ -23,6 +23,7 @@ class Home extends Component {
     super(props)
 
     this.state = {
+      isAdmin: false,
       parks: [],
       isLoading: false,
     }
@@ -46,13 +47,12 @@ class Home extends Component {
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        /><MarkerClusterGroup>
+        /><MarkerClusterGroup className="customcluster">
         {parks.map(park => {
           return (
-            L.Icon.Default.mergeOptions,
-
+            L.Icon.Default.mergeOptions, // Defaul leaflet pin
             <Marker position={[park.latitude, park.longitude]} icon={myIcon} >
-              <Popup >
+              <Popup className="custom-popup">
                 ID: {park.id} <br/>
                 Park Adı: {park.name} <br/>
                 Lokasyon: {park.address} <br/>

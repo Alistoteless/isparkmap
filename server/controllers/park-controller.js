@@ -43,34 +43,29 @@ updatePark = async (req, res) => {
             success: false,
             error: 'You must provide a body to update',
         })
-    }
+    }else {
 
-    Park.findOne({ _id: req.params.id }, (err, park) => {
-        if (err) {
-            return res.status(404).json({
-                err,
-                message: 'Park not found!',
-            })
-        }
-        park.name = body.name
-        park.time = body.time
-        park.rating = body.rating
-        park
-            .save()
-            .then(() => {
+        Park.findOneAndUpdate({ id: req.body.id }, body, (err, park) => {
+        
+            if(park && park.id){
                 return res.status(200).json({
                     success: true,
-                    id: park._id,
+                    id: park.id,
                     message: 'Park updated!',
                 })
-            })
-            .catch(error => {
+            } else if (err) {
                 return res.status(404).json({
-                    error,
+                    err,
+                    message: 'Park not uptated!',
+                })
+            } else {
+                return res.status(404).json({               
                     message: 'Park not updated!',
                 })
-            })
-    })
+            }
+          
+        })
+    }
 }
 
 deletePark = async (req, res) => {
@@ -87,15 +82,6 @@ deletePark = async (req, res) => {
         return res.status(200).json({ success: true, data: park })
     }).catch(err => console.log(err))
 }
-
-deleteAll = async (req, res) => {
-        await Park.deleteMany( (err, parks) => {
-            if (err) {
-                return res.status(400).json({ success: false, error: err })
-            } else if (parks > 0)
-                return res.status(200).json({ success: true, data: parks })
-        })
-} 
 
 getParkById = async (req, res) => {
     await Park.findOne({ id: req.params.id }, (err, park) => {
@@ -122,6 +108,11 @@ getParks = async (req, res) => {
 }
 
 fetchFromIspark = async (req, res) => {
+
+    await Park.deleteMany({}, (err, result) => {
+        console.log(result)
+    })
+
     const remoteParksResponse = await axios.get('https://data.ibb.gov.tr/api/3/action/datastore_search?resource_id=f4f56e58-5210-4f17-b852-effe356a890c&limit=710')
     if (remoteParksResponse && remoteParksResponse.data && remoteParksResponse.data.result && remoteParksResponse.data.result.records && Array.isArray(remoteParksResponse.data.result.records) && remoteParksResponse.data.result.records.length > 0) {
         let parks = remoteParksResponse.data.result.records.map(p => {
@@ -158,5 +149,4 @@ module.exports = {
     getParks,
     getParkById,
     fetchFromIspark,
-    deleteAll,
 }

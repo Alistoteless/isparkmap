@@ -11,6 +11,5 @@ router.get('/park/:id', parkController.getParkById)
 router.get('/parks', parkController.getParks)
 
 router.get('/parks/fetch-from-ispark', parkController.fetchFromIspark)
-router.get('/parks/deleteAll', parkController.deleteAll)
 
 module.exports = router

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import api, { getAllParks } from '../api'
+import api from '../api'
 
 import styled from 'styled-components'
 
@@ -109,19 +109,11 @@ class ParksInsert extends Component {
                     onChange={this.handleInputChange}
                 />
 
-                <Label>Park Type: </Label>
+                <Label>Park Tipi:</Label>
                 <InputText
                     type="text"
                     id="parkType"
                     value={parkType}
-                    onChange={this.handleInputChange}
-                />
-
-                <Label>Park Tipi:</Label>
-                <InputText
-                    type="text"
-                    id="parkTypeDescription"
-                    value={parkTypeDescription}
                     onChange={this.handleInputChange}
                 />
 

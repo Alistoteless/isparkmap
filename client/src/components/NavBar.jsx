@@ -21,7 +21,7 @@ class NavBar extends Component {
         return (
             <Container className="container">
                 <Nav>
-                    <Links hidden/>
+                    <Links />
                     <Logo />
                 </Nav>
             </Container>

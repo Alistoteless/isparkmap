@@ -9,30 +9,42 @@ import {
 import '../style/login.css';
 
 class Login extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { value: '' };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(event) { this.setState({ value: event.target.value }); }
+  handleSubmit(event) {
+    if (this.state.value === 'admin123') {
+      this.setState({ isAdmin: true })
+      alert('You are admin, welcome..');
+    }
+    else {
+      alert('You are not admin!');
+    }
+    event.preventDefault();
+  }
+
+
   render() {
     return (
       <div className="login">
         <h2>Admin Girişi</h2>
-        <Form className="form">
+        <Form className="form" onSubmit={this.handleSubmit}>
           <FormGroup>
-            <Label for="user">Kullanıcı</Label>
-            <Input
-              type="text"
-              name="user"
-              id="user"
-              placeholder="yönetici için: admin"
-            />
-          </FormGroup>
-          <FormGroup>
-            <Label for="examplePassword">Şifre</Label>
+            <Label for="pass">Şifre</Label>
             <Input
               type="password"
-              name="password"
-              id="examplePassword"
-              placeholder="********"
+              name="pass"
+              id="password"
+              placeholder="**********"
+              value={this.state.value} onChange={this.handleChange}
             />
           </FormGroup>
-          <Button>Submit</Button>
+          <Button type="submit" value="Submit">Giriş</Button>
         </Form>
       </div>
     );

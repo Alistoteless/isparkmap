@@ -11,7 +11,6 @@ export const deleteParkById = id => api.delete(`/park/${id}`)
 export const getParkById = id => api.get(`/park/${id}`)
 
 export const fetchFromIspark = () => api.get(`/parks/fetch-from-ispark`)
-export const deleteAll = () => api.get(`/park/deleteAll`)
 
 const apis = {
     insertPark,
@@ -19,8 +18,7 @@ const apis = {
     updateParkById,
     deleteParkById,
     getParkById,
-    fetchFromIspark,
-    deleteAll
+    fetchFromIspark
 }
 
 export default apis

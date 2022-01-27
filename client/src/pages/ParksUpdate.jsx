@@ -59,11 +59,11 @@ class ParksUpdate extends Component {
 
     handleUpdatePark = async () => {
         const { id, name, address, parkType, parkTypeDescription, capacity, workingHours, district, longitude, latitude} = this.state
-        const payload = { id, name, address, parkType, parkTypeDescription, capacity, workingHours, district, longitude, latitude }
+        const payload = {id, name, address, parkType, parkTypeDescription, capacity, workingHours, district, longitude, latitude }
 
         await api.updateParkById(id, payload).then(res => {
             window.alert(`Park updated successfully`)
-            this.setState({
+           /*  this.setState({
                 name: '',
                 address: '',
                 parkType: '',
@@ -73,7 +73,7 @@ class ParksUpdate extends Component {
                 district: '',
                 longitude: 0,
                 latitude: 0
-            })
+            }) */
         })
     }
 
@@ -110,6 +110,7 @@ class ParksUpdate extends Component {
                 <Label>Park Yeri Adı:</Label>
                 <InputText
                     type="text"
+                    id="name"
                     value={name}
                     onChange={this.handleInputChange}
                 />
